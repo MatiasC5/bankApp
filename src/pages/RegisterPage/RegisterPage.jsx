@@ -1,11 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { useUser } from '../../hooks/useUser';
+import { useForm } from '../../hooks/useForm';
 
 export const Register = () => {
   const [isEmpty, setIsEmpty] = useState(false);
   const [userCreated, setUserCreated] = useState(false);
   const { setUserRegistered, userRegistered } = useUser();
+  const { handleInputChange } = useForm();
 
   const navigate = useNavigate();
 
@@ -18,27 +20,6 @@ export const Register = () => {
   const onNewUser = (user) => {
     if (!userInfo.name || !userInfo.password) return;
     setUserRegistered((prevUser) => [...prevUser, user]);
-  };
-
-  const handleUserName = (e) => {
-    setUserInfo({
-      ...userInfo,
-      name: e.target.value,
-    });
-  };
-
-  const handleUserPassword = (e) => {
-    setUserInfo({
-      ...userInfo,
-      password: e.target.value,
-    });
-  };
-
-  const handleUserEmail = (e) => {
-    setUserInfo({
-      ...userInfo,
-      email: e.target.value,
-    });
   };
 
   const handleForm = (e) => {
@@ -65,9 +46,9 @@ export const Register = () => {
     }, 1000);
   };
 
-  useEffect(() => {
-    console.log(userRegistered);
-  }, [userRegistered]);
+  // useEffect(() => {
+  //   console.log(userRegistered);
+  // }, [userRegistered]);
 
   return (
     <section className=" flex  flex-col items-center justify-center h-screen">
@@ -88,7 +69,7 @@ export const Register = () => {
             type="text"
             className={`border ${isEmpty ? 'border-red-500' : ''} h-10`}
             id="user"
-            onChange={handleUserName}
+            onChange={(e) => handleInputChange(e)}
             name="user"
             value={userInfo.name}
           />
@@ -106,7 +87,7 @@ export const Register = () => {
             type="password"
             className={`border ${isEmpty ? 'border-red-500' : ''} h-10`}
             id="password"
-            onChange={handleUserPassword}
+            onChange={(e) => handleInputChange(e)}
             name="password"
             value={userInfo.password}
           />
@@ -124,7 +105,7 @@ export const Register = () => {
             type="email"
             className={`border ${isEmpty ? 'border-red-500' : ''} h-10`}
             id="email"
-            onChange={handleUserEmail}
+            onChange={(e) => handleInputChange(e)}
             name="email"
             value={userInfo.email}
           />
