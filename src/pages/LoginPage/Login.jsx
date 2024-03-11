@@ -9,6 +9,7 @@ export const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+
     userRegistered.some((user) => {
       if (user.name === username && user.password === password) {
         const userData = { username, password };
@@ -24,7 +25,7 @@ export const Login = () => {
   return (
     <main className="w-full flex flex-col items-center ">
       <form
-        className=" flex flex-col gap-4 w-96  p-20 bg-gray-200  rounded-md relative top-64"
+        className="login-form flex flex-col gap-4  p-20 bg-gray-200  rounded-md relative top-64"
         onSubmit={handleLogin}
       >
         <input
@@ -39,6 +40,10 @@ export const Login = () => {
         />
         <button className="bg-blue-500 rounded-md">Log In</button>
       </form>
+      <div className="remember-user">
+        <input type="checkbox" id="remember-check" />
+        <label htmlFor="remember-check">Remember me</label>
+      </div>
       <Link
         to="/register"
         className="relative top-64 mt-4 text-sm text-center text-blue-500 hover:underline cursor-pointer"

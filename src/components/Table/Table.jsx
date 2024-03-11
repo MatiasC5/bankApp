@@ -1,13 +1,9 @@
 import { useState } from 'react';
+import { useUser } from '../../hooks/useUser';
 
 export const Table = () => {
-  const [moneyInAccount, setUserMoneyInAccount] = useState({
-    amount: 0,
-    description: '',
-    date: `${new Date().getDate()}/${
-      new Date().getMonth() + 1
-    }/${new Date().getFullYear()}`,
-  });
+  const { moneyInAccount } = useUser();
+
   return (
     <table className="w-full h-screen mt-10">
       <thead>
@@ -24,7 +20,7 @@ export const Table = () => {
           <td className="text-lg">{moneyInAccount.description}</td>
 
           <td className="w-16 text-left text-lg truncate">
-            {moneyInAccount.amount}
+            {moneyInAccount.moneyReceived}
           </td>
         </tr>
       </tbody>

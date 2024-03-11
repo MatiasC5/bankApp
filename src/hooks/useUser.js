@@ -10,18 +10,28 @@ export const useUser = () => {
     setIsLogged,
     userRegistered,
     setUserRegistered,
+    moneyInAccount,
+    setUserMoneyInAccount,
   } = useContext(UserContext);
   const navigate = useNavigate();
 
   const login = () => {
+    const lastPath = localStorage.getItem('lastPath') || '/';
     setIsLogged(true);
-    navigate('/');
+    navigate(lastPath, { replace: true });
   };
 
   const logout = () => {
     setIsLogged(false);
     sessionStorage.removeItem('user');
     setUser({ username: '' });
+    setUserMoneyInAccount({
+      amount: 0,
+      description: '',
+      date: `${new Date().getDate()}/${
+        new Date().getMonth() + 1
+      }/${new Date().getFullYear()}`,
+    });
   };
 
   return {
@@ -33,5 +43,7 @@ export const useUser = () => {
     setIsLogged,
     userRegistered,
     setUserRegistered,
+    moneyInAccount,
+    setUserMoneyInAccount,
   };
 };

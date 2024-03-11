@@ -1,8 +1,11 @@
 import { Aside } from '../../components/Aside/Aside';
 import { Header } from '../../components/Header/Header';
 import { Table } from '../../components/Table/Table';
+import { useUser } from '../../hooks/useUser';
 
 export const MainPage = () => {
+  const { moneyInAccount } = useUser();
+
   return (
     <section className="flex flex-col h-screen">
       <Header />
@@ -19,7 +22,9 @@ export const MainPage = () => {
               />
             </div>
 
-            <span className="text-3xl font-semibold">$20.000</span>
+            <span className="text-3xl font-semibold">
+              {moneyInAccount.amount}
+            </span>
           </div>
           <Table />
         </div>

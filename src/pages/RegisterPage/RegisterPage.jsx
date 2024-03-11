@@ -7,7 +7,6 @@ export const Register = () => {
   const [isEmpty, setIsEmpty] = useState(false);
   const [userCreated, setUserCreated] = useState(false);
   const { setUserRegistered, userRegistered } = useUser();
-  const { handleInputChange } = useForm();
 
   const navigate = useNavigate();
 
@@ -20,6 +19,13 @@ export const Register = () => {
   const onNewUser = (user) => {
     if (!userInfo.name || !userInfo.password) return;
     setUserRegistered((prevUser) => [...prevUser, user]);
+  };
+
+  const handleInputChange = (e) => {
+    setUserInfo({
+      ...userInfo,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleForm = (e) => {
@@ -70,7 +76,7 @@ export const Register = () => {
             className={`border ${isEmpty ? 'border-red-500' : ''} h-10`}
             id="user"
             onChange={(e) => handleInputChange(e)}
-            name="user"
+            name="name"
             value={userInfo.name}
           />
           {isEmpty ? (

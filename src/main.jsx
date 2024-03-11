@@ -7,6 +7,7 @@ import { AppRouter } from './AppRouter.jsx';
 import { UserProvider } from './context/UserContext.jsx';
 import { Register } from './pages/RegisterPage/RegisterPage.jsx';
 import './index.css';
+import { MainPage } from './pages/MainPage/MainPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register />,
+  },
+  {
+    path: '/',
+    element: <MainPage />,
   },
 ]);
 

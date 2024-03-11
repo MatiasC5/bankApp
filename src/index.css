@@ -2,3 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+.login-form {
+  width: 500px;
+  height: 600px;
+  border: 2px solid black;
+}
+
+.login-form input {
+  height: 30px;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.login-form button {
+  height: 50px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.remember-user {
+  z-index: 99999;
+  accent-color: rgb(56, 209, 125);
+  gap: 4px;
+  align-items: center;
+  display: flex;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.remember-user input,
+.remember-user label {
+  cursor: pointer;
+}

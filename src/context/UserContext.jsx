@@ -8,6 +8,15 @@ export function UserProvider({ children }) {
   const [userRegistered, setUserRegistered] = useState([]);
   const [isLogged, setIsLogged] = useState(false);
 
+  const [moneyInAccount, setUserMoneyInAccount] = useState({
+    amount: 0,
+    description: '',
+    date: `${new Date().getDate()}/${
+      new Date().getMonth() + 1
+    }/${new Date().getFullYear()}`,
+    moneyReceived: 0,
+  });
+
   return (
     <UserContext.Provider
       value={{
@@ -17,6 +26,8 @@ export function UserProvider({ children }) {
         setUser,
         setIsLogged,
         setUserRegistered,
+        moneyInAccount,
+        setUserMoneyInAccount,
       }}
     >
       {children}
